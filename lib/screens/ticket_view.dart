@@ -12,16 +12,18 @@ class TicketView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);  
+    //refer app_layout.dart file to know what the AppLayout class does.
+    final size = AppLayout.getSize(context);
+
     return SizedBox(
-      width:size.width,
-      height: 200,
+      width:size.width, //width is dependant on the orientation of the device.
+      height: 200, //height is set to 200px regardless of the orientation.
 
       child : Container(
         margin: const EdgeInsets.only(left: 16),
         child: Column(
           children: [
-            //This container is responsible for the blue part of the ticket.
+            //This container is responsible for the blue part of the ticket
             Container(
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
@@ -86,15 +88,63 @@ class TicketView extends StatelessWidget {
               ),
             ),
 
-            //This container is responsible for the orange part of the ticket.
+            //This container is responsible for the small orange part of the ticket
             Container(
+              color: Styles.orangeColor,
+              //Row responsible for the semi-circles and the dotted white lines
+              child: Row(
+                children : [
+                //The sized box represents the semi circles of the "Ticket shaped" layout in home screen
+                  const SizedBox(
+                      height: 20,
+                      width: 10,
+                      child : DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(10),bottomRight: Radius.circular(10)),
+                          ),
+                      ),
+                  ),
+                  //Adding an expanded widget to space the two semi circles apart from each other
+                  //Added this instead of mainAxisAlignment in Row() because we need to add the " ------ " lines in-between the two semi-circles
+                  Expanded(child: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints){
+                      return Flex(
+                          direction: Axis.horizontal,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children : List.generate((constraints.constrainWidth()/15).floor() , (index) => const SizedBox(
+                            height: 1,
+                            width: 5,
+                            child: DecoratedBox(decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),),
+                          ))
+                      );
+                    }
+                  )),
+                  const SizedBox(
+                    height: 20,
+                    width: 10,
+                    child: DecoratedBox(decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+                      color: Colors.white,
+                    ),),
 
-
+                  ),
+                ],
+              ),
+            ),
+            //This container is responsible for the bigger orange part of the ticket
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21)),
+                  color: Styles.orangeColor,
+                ),
             ),
           ],
         ),
       )
-
     );
   }
 }
