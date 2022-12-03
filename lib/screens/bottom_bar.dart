@@ -1,7 +1,6 @@
 import 'package:book_tickets/screens/home_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 
 class BottomBar extends StatefulWidget {
@@ -14,7 +13,7 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
 
   static final List<Widget> _widgetOptions = <Widget>[  //The "_widgetOption" variable is of type "List <> ". The List is of type <Widgets>
-    HomeScreen(), //Each text is a widget in the list array. Hence index here = 0
+    const HomeScreen(), //Each text is a widget in the list array. Hence index here = 0
     const Text("Search"), //Index = 1
     const Text("Tickets"), // Index = 2
     const Text("Profile") // Index = 3

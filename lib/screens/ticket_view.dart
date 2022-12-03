@@ -1,7 +1,5 @@
 import 'package:book_tickets/utils/app_styles.dart';
 import 'package:book_tickets/utils/thick_container.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../utils/app_layout.dart';
@@ -16,12 +14,14 @@ class TicketView extends StatelessWidget {
     final size = AppLayout.getSize(context);
 
     return SizedBox(
-      width:size.width, //width is dependant on the orientation of the device.
+      width:size.width*0.85, //width is dependant on the orientation of the device.
+        //width * 0.85 = we r using only 85% of the screen.  (85% = 85/100 = 0.85)
       height: 200, //height is set to 200px regardless of the orientation.
 
       child : Container(
-        margin: const EdgeInsets.only(left: 16),
+        margin: const EdgeInsets.only(right: 16),
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
             //This container is responsible for the blue part of the ticket
             Container(
@@ -43,7 +43,7 @@ class TicketView extends StatelessWidget {
                           height: 24,
                           child : LayoutBuilder(
                             builder: (BuildContext context , BoxConstraints constraints ) {
-                              print("Width is ${constraints.constrainWidth()}");
+                              //print("Width is ${constraints.constrainWidth()}");
                               return Flex(
                                 direction: Axis.horizontal,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,11 +136,63 @@ class TicketView extends StatelessWidget {
             ),
             //This container is responsible for the bigger orange part of the ticket
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21)),
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21)),
                   color: Styles.orangeColor,
                 ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //First column contents inside of the orange ticket part.
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("JAN 19",
+                            style: Styles.headLineStyle2.copyWith(color: Colors.white),),
+                          const Gap(5),
+                          Text("Date",
+                            style: Styles.headLineStyle4.copyWith(color: Colors.white),)
+                        ],
+                      ),
+
+                      //Second column contents at the center of the orange ticket part.
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("08 : 00 AM",
+                            style: Styles.headLineStyle2.copyWith(color: Colors.white),
+                          ),
+                          const Gap(5),
+                          Text("Departure Time",
+                            style: Styles.headLineStyle4.copyWith(color: Colors.white),
+                          ),
+                        ],
+                      ),
+
+                      //Third column contents at the end of the orange ticket part.
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text("23",
+                            style: Styles.headLineStyle2.copyWith(color: Colors.white),
+
+                          ),
+                          const Gap(5),
+                          Text("Number",
+                            style: Styles.headLineStyle4.copyWith(color: Colors.white),
+
+                          ),
+                        ],
+                      ),
+
+                    ],
+
+                  )
+                ],
+              ),
             ),
           ],
         ),

@@ -1,6 +1,6 @@
+import 'package:book_tickets/screens/hotel_screen.dart';
 import 'package:book_tickets/screens/ticket_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:book_tickets/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     //Start of home screen, by a list of widgets aligned either as columns or rows.
       body: ListView(
         children: [
-      //One big container that holds all the elements within the home screen.
+      //One big container that holds the Starting texts, search box, and the text below the search box.
           Container(
            padding: const EdgeInsets.all(20), //pads left,right,up & down by 20px
             // padding: EdgeInsets.symmetric(horizontal: 20),  //pads the container on both sides (left and right) by 20px.
@@ -88,7 +88,6 @@ class HomeScreen extends StatelessWidget {
                     style: Styles.headLineStyle2),
                     InkWell(   //Turn texts into clickable buttons.
                       onTap: (){
-                        print("I just tapped 'View all' ");
                       },
                       child: Text("View all",
                       //copyWith() is used to add to the Styles.<variables>
@@ -100,9 +99,49 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const Gap(15),
-          const TicketView(),
-        ],
-      ),
+
+          //A box inside which the display will be scrollable either vertically or horizontally for a single widget.
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(  //The single child of this scrollable widget.
+              children : const[
+                //The ticket ui is made scrollable horizontally.
+                TicketView(),
+                TicketView(),
+              ],
+            ),
+          ),
+          const Gap(15),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:  [
+                Text("Hotels",
+                    style: Styles.headLineStyle2),
+                InkWell(   //Turn texts into clickable buttons.
+                  onTap: (){
+                  },
+                  child: Text("View all",
+                      //copyWith() is used to add to the Styles.<variables>
+                      style: Styles.headLineStyle4.copyWith(color: Styles.primaryColor)),
+                ),
+              ],
+            ),
+          ),
+          const Gap(15),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(left: 20),
+            child:Row(
+              children: const [
+                HotelScreen(),
+                HotelScreen(),
+                ],
+              )),
+          ],
+        ),
     );
   }
 }
