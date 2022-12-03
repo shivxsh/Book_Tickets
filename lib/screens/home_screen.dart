@@ -138,6 +138,8 @@ class HomeScreen extends StatelessWidget {
               children: const [
                 HotelScreen(),
                 HotelScreen(),
+                HotelScreen(),
+                HotelScreen(),
                 ],
               )),
           ],
