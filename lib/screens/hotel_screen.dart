@@ -1,11 +1,11 @@
 import 'package:book_tickets/utils/app_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import '../utils/app_styles.dart';
 
 class HotelScreen extends StatelessWidget {
-  const HotelScreen({Key? key}) : super(key: key);
+  final Map<String, dynamic> hotel;
+  const HotelScreen({Key? key, required this.hotel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,11 @@ class HotelScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Styles.primaryColor,
-              image: const DecorationImage(
+              image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
-                  "assets/images/one.png"
+                  //generates images of the hotels from the map.
+                  "assets/images/${hotel['image']}"
                 )
               )
             ),

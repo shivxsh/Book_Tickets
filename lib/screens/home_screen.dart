@@ -5,6 +5,8 @@ import 'package:book_tickets/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
+import '../utils/app_info_list.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -135,12 +137,8 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 20),
             child:Row(
-              children: const [
-                HotelScreen(),
-                HotelScreen(),
-                HotelScreen(),
-                HotelScreen(),
-                ],
+              children: hotelList.map((singleHotel) => HotelScreen(hotel: singleHotel)).toList(), //Here 'singleHotel' is just a temp variable.
+              //'hotel' is the name of the main variable of type map in the "app_info_list.dart" file, which has the "HotelScreen" class.
               )),
           ],
         ),
