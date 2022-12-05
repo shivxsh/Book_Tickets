@@ -25,13 +25,13 @@ class HotelScreen extends StatelessWidget {
       margin: const EdgeInsets.only(right: 15), //Spacing between the containers of the home screen.
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15), //Spacing inside the container between container and the image
       width: size.width * 0.6,
-      height: 350,
+      height: AppLayout.getHeight(350),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //This container contains the images
           Container(
-            height: 180,
+            height: AppLayout.getHeight(180),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Styles.primaryColor,
