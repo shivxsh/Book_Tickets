@@ -106,12 +106,11 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 20),
-            child: Row(  //The single child of this scrollable widget.
-              children : const[
-                //The ticket ui is made scrollable horizontally.
-                TicketView(),
-                TicketView(),
-              ],
+            child: Row(
+              //The single child of this scrollable widget.
+              //The ticket ui is made scrollable horizontally.
+              children : ticketList.map((singleTicket) => TicketView(ticket: singleTicket,)).toList(),
+              //Similar to the hotel_screen, we make a map from the app_info_list.dart file and dynamically change the values.
             ),
           ),
           const Gap(15),

@@ -6,7 +6,8 @@ import '../utils/app_layout.dart';
 
 //This code is for the UI of ticket view in home screen.
 class TicketView extends StatelessWidget {
-  const TicketView({Key? key}) : super(key: key);
+  final Map<String, dynamic> ticket;
+  const TicketView({Key? key, required this.ticket}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class TicketView extends StatelessWidget {
                   //First row containing "NYC" , " Flight icon on " ---- "  " and "LDN".
                   Row(
                     children: [
-                      Text("NYC", style: Styles.headLineStyle2.copyWith(color: Colors.white),),
+                      Text(ticket['from']['code'], style: Styles.headLineStyle2.copyWith(color: Colors.white),),
                       Expanded(child: Container(),),
                       const ThickContainer(),
                       Expanded(child: Stack(
@@ -62,7 +63,7 @@ class TicketView extends StatelessWidget {
 
                       const ThickContainer(),
                       Expanded(child: Container(),),//Spaces 2 row elements.
-                      Text("LDN", style: Styles.headLineStyle2.copyWith(color: Colors.white),),
+                      Text(ticket['to']['code'], style: Styles.headLineStyle2.copyWith(color: Colors.white),),
                     ],
                   ),
 
@@ -74,12 +75,12 @@ class TicketView extends StatelessWidget {
                     children: [
                       SizedBox(
                           width: 100,
-                          child: Text("New-York", style: Styles.headLineStyle4.copyWith(color: Colors.white),)
+                          child: Text(ticket['from']['name'], style: Styles.headLineStyle4.copyWith(color: Colors.white),)
                       ),
-                      Text("8H 30M", style: Styles.headLineStyle4.copyWith(color: Colors.white),),
+                      Text(ticket['flying_time'], style: Styles.headLineStyle4.copyWith(color: Colors.white),),
                       SizedBox(
                           width: 100,
-                          child: Text("London",
+                          child: Text(ticket['to']['name'],
                           textAlign: TextAlign.end, style: Styles.headLineStyle4.copyWith(color: Colors.white)),
                       ),
                     ],
@@ -150,7 +151,7 @@ class TicketView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("JAN 19",
+                          Text(ticket['date'],
                             style: Styles.headLineStyle2.copyWith(color: Colors.white),),
                           const Gap(5),
                           Text("Date",
@@ -162,7 +163,7 @@ class TicketView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("08 : 00 AM",
+                          Text(ticket['departure_time'],
                             style: Styles.headLineStyle2.copyWith(color: Colors.white),
                           ),
                           const Gap(5),
@@ -176,7 +177,8 @@ class TicketView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text("23",
+                          Text(ticket["number"].toString(),  //since, the number is given in ann integer format in the map.
+                          //hence, we convert it into a string since the map we assigned for the ticket is a <String, dynamic>
                             style: Styles.headLineStyle2.copyWith(color: Colors.white),
 
                           ),
@@ -187,9 +189,7 @@ class TicketView extends StatelessWidget {
                           ),
                         ],
                       ),
-
                     ],
-
                   )
                 ],
               ),
