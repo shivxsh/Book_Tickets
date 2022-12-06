@@ -1,5 +1,6 @@
 import 'package:book_tickets/screens/hotel_screen.dart';
 import 'package:book_tickets/screens/ticket_view.dart';
+import 'package:book_tickets/utils/double_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:book_tickets/utils/app_styles.dart';
 import 'package:gap/gap.dart';
@@ -82,21 +83,21 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 const Gap(40),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:  [
-                    Text("Upcoming Flights",
-                    style: Styles.headLineStyle2),
-                    InkWell(   //Turn texts into clickable buttons.
-                      onTap: (){
-                      },
-                      child: Text("View all",
-                      //copyWith() is used to add to the Styles.<variables>
-                      style: Styles.headLineStyle4.copyWith(color: Styles.primaryColor)),
-                    ),
-                  ],
-                )
+                const DoubleText(bigText: "Upcoming Flights", smallText: "View all"),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children:  [
+                //     Text("Upcoming Flights",
+                //     style: Styles.headLineStyle2),
+                //     InkWell(   //Turn texts into clickable buttons.
+                //       onTap: (){
+                //       },
+                //       child: Text("View all",
+                //       //copyWith() is used to add to the Styles.<variables>
+                //       style: Styles.headLineStyle4.copyWith(color: Styles.primaryColor)),
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ),
