@@ -93,10 +93,11 @@ class SearchScreen extends StatelessWidget {
           const DoubleText(bigText: "Upcoming Flights", smallText: "View all"),
           Gap(AppLayout.getHeight(15)),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //This container holds both : image and the text beneath it.
               Container(
-                height: AppLayout.getHeight(400),
+                height: AppLayout.getHeight(425),
                 width: size.width*0.42,
                 padding: EdgeInsets.symmetric(horizontal:AppLayout.getHeight(15) ,vertical: AppLayout.getWidth(15)),
                 decoration: BoxDecoration(
@@ -132,6 +133,78 @@ class SearchScreen extends StatelessWidget {
                 ),
               ),
               Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        width: size.width*0.44,
+                        height: AppLayout.getHeight((200)),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF3AB8B8),
+                          borderRadius: BorderRadius.circular(AppLayout.getHeight(18))
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(15), horizontal: AppLayout.getWidth(15)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:[
+                            Text("Discount\nfor survey!",
+                          style: Styles.headLineStyle1.copyWith(fontWeight: FontWeight.bold, color: Colors.white)
+                            ),
+                            Gap(AppLayout.getWidth(15)),
+                            Text("Take the survey about our services & get a discount.",
+                              style: Styles.headLineStyle3.copyWith(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18.5),),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        right: -45,
+                        top: -40,
+
+                        child: Container(
+                        padding: EdgeInsets.all(AppLayout.getHeight(30)),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 18, color: Color(0xFF189999)),
+                          color: Colors.transparent,
+                        ),
+                      ),)
+                      //The small blue semi circle inside the blue card.
+
+                    ],
+                  ),
+                  Gap(AppLayout.getHeight(15)),
+                  Container(
+                    width: size.width*0.45,
+                    height: AppLayout.getHeight(210),
+                    padding: EdgeInsets.symmetric(vertical:AppLayout.getHeight(15), horizontal: AppLayout.getWidth(15)),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEC6545),
+                      borderRadius: BorderRadius.circular(AppLayout.getHeight(18)),
+                    ),
+                    child: Column(
+                      children: [
+                        Text("Take love", style: Styles.headLineStyle2.copyWith(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+                        Gap(AppLayout.getHeight(5)),
+                        RichText(text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '😍',
+                              style: TextStyle(fontSize: 34),
+                            ),
+                            TextSpan(
+                              text: '🥰',
+                              style: TextStyle(fontSize: 45),
+                            ),
+                            TextSpan(
+                              text: '😘',
+                              style: TextStyle(fontSize: 34),
+                            ),
+                          ]
+                        ))
+                      ],
+                    ),
+                  )
+                ],
               )
             ],
           )
