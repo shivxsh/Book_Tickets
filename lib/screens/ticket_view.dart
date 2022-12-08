@@ -7,18 +7,17 @@ import '../utils/app_layout.dart';
 //This code is for the UI of ticket view in home screen.
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketView({Key? key, required this.ticket}) : super(key: key);
+  final bool? isColor; //initially set to null
+  const TicketView({Key? key, required this.ticket, required this.isColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //refer app_layout.dart file to know what the AppLayout class does.
     final size = AppLayout.getSize(context);
-
     return SizedBox(
       width:size.width*0.85, //width is dependant on the orientation of the device.
         //width * 0.85 = we r using only 85% of the screen.  (85% = 85/100 = 0.85)
       height: AppLayout.getHeight(200), //height is set to 200px regardless of the orientation.
-
       child : Container(
         margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
         child: Column(

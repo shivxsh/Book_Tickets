@@ -1,5 +1,6 @@
 import 'package:book_tickets/screens/home_screen.dart';
 import 'package:book_tickets/screens/search_screen.dart';
+import 'package:book_tickets/screens/ticket_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
     //Each text is a widget in the list array. Hence index here = 0
     const HomeScreen(),
     const SearchScreen(), //Index = 1
-    const Text("Tickets"), // Index = 2
+    const TicketScreen(), // Index = 2
     const Text("Profile") // Index = 3
   ];
 
@@ -37,7 +38,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:  Center(child: _widgetOptions[_selectedWidgetIndex]),  //When u select an item in the bottom nav bar, it displays the contents of that specific page
-      backgroundColor: Colors.deepOrangeAccent,
+      //backgroundColor: Colors.deepOrangeAccent,
       bottomNavigationBar : BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(FluentSystemIcons.ic_fluent_home_regular),activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),label: "Home"),

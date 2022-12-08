@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:book_tickets/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
-
 import '../utils/app_info_list.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               //The single child of this scrollable widget.
               //The ticket ui is made scrollable horizontally.
-              children : ticketList.map((singleTicket) => TicketView(ticket: singleTicket,)).toList(),
+              children : ticketList.map((singleTicket) => TicketView(ticket: singleTicket, isColor: null,)).toList(),
               //Similar to the hotel_screen, we make a map from the app_info_list.dart file and dynamically change the values.
             ),
           ),
