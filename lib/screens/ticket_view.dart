@@ -7,7 +7,8 @@ import '../utils/app_layout.dart';
 //This code is for the UI of ticket view in home screen.
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  final bool? isColor; //initially set to null
+  final bool? isColor; //initially set to null. If its true, change the color else dont change the color.
+  //Introduced for ticket screen.
   const TicketView({Key? key, required this.ticket, required this.isColor}) : super(key: key);
 
   @override
@@ -28,7 +29,8 @@ class TicketView extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               decoration:  BoxDecoration(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(AppLayout.getHeight(21)), topRight: Radius.circular(AppLayout.getHeight(21))),
-                color: const Color(0xFF526799),
+                //This is the color that changes with respect to the "isColor" boolean variable.
+                color: isColor == null ? const Color(0xFF526799) : Colors.white,
               ),
               child: Column(
                 children: [
