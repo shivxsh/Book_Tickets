@@ -25,7 +25,7 @@ class TicketScreen extends StatelessWidget {
             Gap(AppLayout.getHeight(20)),
             Container(
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
-              child: TicketView(ticket: ticketList[0], isColor: null,),
+              child: TicketView(ticket: ticketList[0], isColor: true,),
             )
           ],
         ),

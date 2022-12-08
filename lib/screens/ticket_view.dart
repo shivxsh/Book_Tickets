@@ -37,7 +37,8 @@ class TicketView extends StatelessWidget {
                   //First row containing "NYC" , " Flight icon on " ---- "  " and "LDN".
                   Row(
                     children: [
-                      Text(ticket['from']['code'], style: Styles.headLineStyle2.copyWith(color: Colors.white),),
+                      Text(ticket['from']['code'],
+                        style: isColor==null? Styles.headLineStyle2.copyWith(color: Colors.white) : Styles.headLineStyle3,),
                       Expanded(child: Container(),),
                       const ThickContainer(),
                       Expanded(child: Stack(
