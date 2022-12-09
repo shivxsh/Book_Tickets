@@ -5,6 +5,8 @@ import 'package:book_tickets/utils/ticket_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../utils/app_info_list.dart';
+import '../utils/column_layout.dart';
+import '../utils/layout_builder_widget.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({Key? key}) : super(key: key);
@@ -28,28 +30,33 @@ class TicketScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
               child: TicketView(ticket: ticketList[0], isColor: true,),
             ),
+            const SizedBox(height: 1,),
             Container(
+              color: Colors.white,
               margin: EdgeInsets.only(left: AppLayout.getHeight(14.90),right: AppLayout.getHeight(16)),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              padding: const EdgeInsets.symmetric(horizontal:15,),
+              padding: const EdgeInsets.symmetric(horizontal:15,vertical: 20),
               child: Column(
                 children: [
                   Row(
-                    children:[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Flutter DB",
-                          style:Styles.headLineStyle3,
-                          ),
-                          Gap(AppLayout.getHeight(5)),
-                          Text("Passenger", style: Styles.headLineStyle3,)
-                        ],
-                      )
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:const [
+                      AppColumnLayout(firstText: "Flutter DB",secondText: "Passenger",alignment: CrossAxisAlignment.start,isColor: false),
+                      AppColumnLayout(firstText: "5221 283749",secondText: "Passport",alignment: CrossAxisAlignment.end,isColor: false),
                     ]
-                  )
+                  ),
+                  Gap(AppLayout.getHeight(20)),
+                  const AppLayoutBuilder(sections: 9, isColor:false, width: 5),
+                  Gap(AppLayout.getHeight(20)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:const [
+                        AppColumnLayout(firstText: "12839 19203",secondText: "Number of E-tickets",alignment: CrossAxisAlignment.start,isColor: false),
+                        AppColumnLayout(firstText: "B2SG28",secondText: "Booking code",alignment: CrossAxisAlignment.end,isColor: false),
+                      ]
+                  ),
+                  Gap(AppLayout.getHeight(20)),
+                  const AppLayoutBuilder(sections: 9, isColor:false, width: 5),
+
 
                 ],
               ),

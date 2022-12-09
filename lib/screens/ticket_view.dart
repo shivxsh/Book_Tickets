@@ -1,9 +1,11 @@
 import 'package:book_tickets/utils/app_styles.dart';
+import 'package:book_tickets/utils/column_layout.dart';
 import 'package:book_tickets/utils/thick_container.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../utils/app_layout.dart';
+import '../utils/layout_builder_widget.dart';
 
 //This code is for the UI of ticket view in home screen.
 class TicketView extends StatelessWidget {
@@ -45,20 +47,7 @@ class TicketView extends StatelessWidget {
                       Expanded(child: Stack(
                         children:[ SizedBox(
                           height: AppLayout.getHeight(24),
-                          child : LayoutBuilder(
-                            builder: (BuildContext context , BoxConstraints constraints ) {
-                              //print("Width is ${constraints.constrainWidth()}");
-                              return Flex(
-                                direction: Axis.horizontal,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children : List.generate((constraints.constrainWidth()/9).floor(), (index) => SizedBox(
-                                    height: AppLayout.getHeight(1), width: AppLayout.getWidth(3),
-                                    child:  DecoratedBox(decoration: BoxDecoration(
-                                      color: isColor==null? Colors.white : Colors.grey.shade300,
-                                    )))),
-                              );
-                            },
-                          ),
+                          child : const AppLayoutBuilder(sections: 9),
                         ),
                           Center(child: Transform.rotate(angle: 1.563, child: Icon(Icons.airplanemode_active_sharp, color: isColor==null? Colors.white : Color(0xFF8ACCF7),))),
                         ],
@@ -115,7 +104,8 @@ class TicketView extends StatelessWidget {
                   ),
                   //Adding an expanded widget to space the two semi circles apart from each other
                   //Added this instead of mainAxisAlignment in Row() because we need to add the " ------ " lines in-between the two semi-circles
-                  Expanded(child: LayoutBuilder(
+                  Expanded(
+                      child: LayoutBuilder(
                     builder: (BuildContext context, BoxConstraints constraints){
                       return Flex(
                           direction: Axis.horizontal,
@@ -154,47 +144,14 @@ class TicketView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      AppColumnLayout(firstText: ticket['date'], secondText: "Date", alignment:CrossAxisAlignment.start, isColor:false),
                       //First column contents inside of the orange ticket part.
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(ticket['date'],
-                            style: isColor==null? Styles.headLineStyle2.copyWith(color: Colors.white) : Styles.headLineStyle3,),
-                          const Gap(5),
-                          Text("Date",
-                            style: isColor==null? Styles.headLineStyle4.copyWith(color: Colors.white) : Styles.headLineStyle4,)
-                        ],
-                      ),
 
+                      AppColumnLayout(firstText: ticket['departure_time'], secondText: "Departure Time", alignment:CrossAxisAlignment.center, isColor:false),
                       //Second column contents at the center of the orange ticket part.
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(ticket['departure_time'],
-                            style: isColor==null? Styles.headLineStyle2.copyWith(color: Colors.white) : Styles.headLineStyle3,
-                          ),
-                          const Gap(5),
-                          Text("Departure Time",
-                            style: isColor==null? Styles.headLineStyle4.copyWith(color: Colors.white) : Styles.headLineStyle4,
-                          ),
-                        ],
-                      ),
 
+                      AppColumnLayout(firstText: ticket["number"].toString(), secondText: "Number", alignment:CrossAxisAlignment.end, isColor:false),
                       //Third column contents at the end of the orange ticket part.
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(ticket["number"].toString(),  //since, the number is given in ann integer format in the map.
-                          //hence, we convert it into a string since the map we assigned for the ticket is a <String, dynamic>
-                            style: isColor==null? Styles.headLineStyle2.copyWith(color: Colors.white) : Styles.headLineStyle3 ,
-
-                          ),
-                          const Gap(5),
-                          Text("Number",
-                            style: isColor==null? Styles.headLineStyle4.copyWith(color: Colors.white) : Styles.headLineStyle4,
-                          ),
-                        ],
-                      ),
                     ],
                   )
                 ],
