@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'app_layout.dart';
-
 import 'app_styles.dart';
 
 class AppColumnLayout extends StatelessWidget {

@@ -12,7 +12,7 @@ class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
   final bool? isColor; //initially set to null. If its true, change the color else dont change the color.
   //Introduced for ticket screen.
-  const TicketView({Key? key, required this.ticket, required this.isColor}) : super(key: key);
+  const TicketView({Key? key, required this.ticket, this.isColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,13 +144,13 @@ class TicketView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AppColumnLayout(firstText: ticket['date'], secondText: "Date", alignment:CrossAxisAlignment.start, isColor:false),
+                      AppColumnLayout(firstText: ticket['date'], secondText: "Date", alignment:CrossAxisAlignment.start, isColor:isColor),
                       //First column contents inside of the orange ticket part.
 
-                      AppColumnLayout(firstText: ticket['departure_time'], secondText: "Departure Time", alignment:CrossAxisAlignment.center, isColor:false),
+                      AppColumnLayout(firstText: ticket['departure_time'], secondText: "Departure Time", alignment:CrossAxisAlignment.center, isColor:isColor),
                       //Second column contents at the center of the orange ticket part.
 
-                      AppColumnLayout(firstText: ticket["number"].toString(), secondText: "Number", alignment:CrossAxisAlignment.end, isColor:false),
+                      AppColumnLayout(firstText: ticket["number"].toString(), secondText: "Number", alignment:CrossAxisAlignment.end, isColor:isColor),
                       //Third column contents at the end of the orange ticket part.
                     ],
                   )

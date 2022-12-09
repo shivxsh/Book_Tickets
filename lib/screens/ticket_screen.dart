@@ -7,13 +7,14 @@ import 'package:gap/gap.dart';
 import '../utils/app_info_list.dart';
 import '../utils/column_layout.dart';
 import '../utils/layout_builder_widget.dart';
+import 'package:barcode_widget/barcode_widget.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
+    //final size = AppLayout.getSize(context);
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: Stack(
@@ -30,7 +31,7 @@ class TicketScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
               child: TicketView(ticket: ticketList[0], isColor: true,),
             ),
-            const SizedBox(height: 1,),
+            const SizedBox(height: 1),
             Container(
               color: Colors.white,
               margin: EdgeInsets.only(left: AppLayout.getHeight(14.90),right: AppLayout.getHeight(16)),
@@ -84,7 +85,38 @@ class TicketScreen extends StatelessWidget {
                   Gap(AppLayout.getHeight(20)),
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 1),
+
+            //Drawing bar code: install package in .yaml file
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(AppLayout.getHeight(21)), bottomRight:Radius.circular(AppLayout.getHeight(21)))
+              ),
+              margin: EdgeInsets.only(left: AppLayout.getHeight(15), right: AppLayout.getHeight(15)),
+              padding: EdgeInsets.only(top: AppLayout.getHeight(20), bottom: AppLayout.getHeight(20)),
+
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(15)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppLayout.getHeight(15)),
+                  child: BarcodeWidget(
+                    barcode: Barcode.code128(),
+                    data: 'https://github.com/shivxsh',
+                    drawText: false,
+                    color: Styles.textColor,
+                    width: double.infinity,
+                    height: 70,
+                  ),
+                ),
+              ),
+            ),
+            Gap(AppLayout.getHeight(20)),
+            Container(
+              padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
+              child: TicketView(ticket: ticketList[0]),
+            ),
           ],
         ),
         ],
