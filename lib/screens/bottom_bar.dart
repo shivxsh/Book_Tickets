@@ -1,4 +1,5 @@
 import 'package:book_tickets/screens/home_screen.dart';
+import 'package:book_tickets/screens/profile_screen.dart';
 import 'package:book_tickets/screens/search_screen.dart';
 import 'package:book_tickets/screens/ticket_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -19,7 +20,7 @@ class _BottomBarState extends State<BottomBar> {
     const HomeScreen(),
     const SearchScreen(), //Index = 1
     const TicketScreen(), // Index = 2
-    const Text("Profile") // Index = 3
+    const ProfileScreen(), // Index = 3
   ];
 
   int _selectedWidgetIndex = 0; //This variable is used to assign the current index to the variable "_selectedWidgetIndex"
