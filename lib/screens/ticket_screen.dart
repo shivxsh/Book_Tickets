@@ -27,6 +27,32 @@ class TicketScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
               child: TicketView(ticket: ticketList[0], isColor: true,),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: AppLayout.getHeight(14.90),right: AppLayout.getHeight(16)),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal:15,),
+              child: Column(
+                children: [
+                  Row(
+                    children:[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Flutter DB",
+                          style:Styles.headLineStyle3,
+                          ),
+                          Gap(AppLayout.getHeight(5)),
+                          Text("Passenger", style: Styles.headLineStyle3,)
+                        ],
+                      )
+                    ]
+                  )
+
+                ],
+              ),
             )
           ],
         ),

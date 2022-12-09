@@ -2,6 +2,7 @@ import 'package:book_tickets/utils/app_styles.dart';
 import 'package:book_tickets/utils/thick_container.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import '../utils/app_layout.dart';
 
 //This code is for the UI of ticket view in home screen.
@@ -18,7 +19,7 @@ class TicketView extends StatelessWidget {
     return SizedBox(
       width:size.width*0.85, //width is dependant on the orientation of the device.
         //width * 0.85 = we r using only 85% of the screen.  (85% = 85/100 = 0.85)
-      height: AppLayout.getHeight(200), //height is set to 200px regardless of the orientation.
+      height: AppLayout.getHeight(GetPlatform.isAndroid==true?190:190), //height is set to 200px regardless of the orientation.
       child : Container(
         margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
         child: Column(
@@ -103,7 +104,7 @@ class TicketView extends StatelessWidget {
                 children : [
                 //The sized box represents the semi circles of the "Ticket shaped" layout in home screen
                   SizedBox(
-                      height: AppLayout.getHeight(20),
+                      height: AppLayout.getHeight(isColor==null?20:26),
                       width: AppLayout.getWidth(10),
                       child : DecoratedBox(
                           decoration: BoxDecoration(
@@ -145,7 +146,7 @@ class TicketView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21)),
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(isColor==null?21:0),bottomRight: Radius.circular(isColor==null?21:0)),
                   color: isColor==null? Styles.orangeColor : Colors.white,
                 ),
               child: Column(
