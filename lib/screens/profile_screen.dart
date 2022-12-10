@@ -12,6 +12,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Styles.bgColor,
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(20), vertical: AppLayout.getHeight(40)),
         children: [
@@ -130,15 +131,27 @@ class ProfileScreen extends StatelessWidget {
           Gap(AppLayout.getHeight(30)),
           Text("Total Miles",
             style: Styles.headLineStyle2.copyWith(fontSize: 27),),
-          Gap(AppLayout.getHeight(15)),
+          Gap(AppLayout.getHeight(25)),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(15)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
+              color: Styles.bgColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade200,
+                  blurRadius: 1,
+                  spreadRadius: 1,
+                )
+              ]
+            ),
             child: Column(
               children: [
                 Text("192802",
                 style: TextStyle(
                   fontSize: 40, fontWeight: FontWeight.w600, color: Styles.textColor,
                 ),),
-                Gap(AppLayout.getHeight(35)),
+                Gap(AppLayout.getHeight(30)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -150,30 +163,49 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Gap(AppLayout.getHeight(8)),
+                Gap(AppLayout.getHeight(10)),
                 Divider(
                   height: AppLayout.getHeight(20),
                   color: Colors.blueGrey,
                 ),
+                //Gap(AppLayout.getHeight(8)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     AppColumnLayout(firstText: "23,043", secondText: "Miles", alignment: CrossAxisAlignment.start, isColor:false),
                     AppColumnLayout(firstText: "Airline CO", secondText: "Received from", alignment: CrossAxisAlignment.start, isColor:false),
                   ],
                 ),
-                // Divider(
-                //   height: AppLayout.getHeight(30),
-                //   color: Colors.blueGrey,
-                // ),
-                Gap(AppLayout.getHeight(12)),
-                const AppLayoutBuilder(sections: 12,isColor: false)
-              ],
+                Gap(AppLayout.getHeight(15)),
+                const AppLayoutBuilder(sections: 12,isColor: false),
+                Gap(AppLayout.getHeight(15)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    AppColumnLayout(firstText: "24", secondText: "Miles", alignment: CrossAxisAlignment.start, isColor:false),
+                    AppColumnLayout(firstText: "McDonal's", secondText: "Received from", alignment: CrossAxisAlignment.start, isColor:false),
+                  ],
+                ),
+                Gap(AppLayout.getHeight(15)),
+                const AppLayoutBuilder(sections: 12,isColor: false),
+                Gap(AppLayout.getHeight(15)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    AppColumnLayout(firstText: "52,340", secondText: "Miles", alignment: CrossAxisAlignment.start, isColor:false),
+                    AppColumnLayout(firstText: "Exuma", secondText: "Received from", alignment: CrossAxisAlignment.start, isColor:false),
+                  ],
+                ),
+            ],
             ),
-          )
-        ],
-
       ),
+          Gap(AppLayout.getHeight(30)),
+          InkWell(
+            onTap: (){},
+            child: Center(
+                child: Text("How to get more miles?",style: Styles.textStyle.copyWith(color: Styles.primaryColor, fontWeight: FontWeight.w500),)),
+          ),
+    ],),
     );
   }
 }
