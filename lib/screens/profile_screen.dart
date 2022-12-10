@@ -16,11 +16,11 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Gap(AppLayout.getHeight(30)),
           Row(
-           //mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: AppLayout.getHeight(90),
-                width: AppLayout.getHeight(90),
+                height: AppLayout.getHeight(85),
+                width: AppLayout.getHeight(85),
                   child: const CircleAvatar(
                     backgroundImage: AssetImage('assets/images/profile_pic.jpg'),
                   ),
@@ -28,7 +28,6 @@ class ProfileScreen extends StatelessWidget {
               Gap(AppLayout.getHeight(10)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children:[
                   Text("Sree Shivesh",
                         style: Styles.headLineStyle1),
@@ -63,12 +62,23 @@ class ProfileScreen extends StatelessWidget {
                   )
                 ],
               ),
+              const Spacer(),
               Column(
+                children: [
+                  InkWell(
+                    onTap: (){},
+                    child: Text(
+                      "Edit",
+                      style: Styles.textStyle.copyWith(color: Styles.primaryColor, fontWeight: FontWeight.w300),
+                    ),
+                  )
+                ],
 
               ),
-
             ],
           ),
+          Gap(AppLayout.getHeight(8)),
+          Divider(color: Colors.grey.shade300,)
         ],
 
       ),
