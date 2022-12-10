@@ -114,7 +114,7 @@ class TicketView extends StatelessWidget {
                              height: AppLayout.getHeight(1),
                              width: AppLayout.getWidth(5),
                             child: DecoratedBox(decoration: BoxDecoration(
-                              color: isColor==null? Colors.white : Colors.grey.shade300 ,
+                              color: isColor==null? Colors.white : Colors.blueGrey ,
                             ),),
                           ))
                       );

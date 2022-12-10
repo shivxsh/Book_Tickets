@@ -20,7 +20,7 @@ class AppLayoutBuilder extends StatelessWidget {
               height: AppLayout.getHeight(1),
               width: width,
               child:  DecoratedBox(decoration: BoxDecoration(
-                color: isColor==null? Colors.white : Colors.grey.shade300,
+                color: isColor==null? Colors.white : Colors.blueGrey,
               )))),
         );
       },
